@@ -10,7 +10,7 @@ jobs:
         - checkout
         - when:
           condition:
-            equal: [${CIRCLE_BRANCH}, master]
+            equal: ["${CIRCLE_BRANCH}", "master"]
           steps:
              - bridgecrew/scan:
             directory: ./terraform/aws
