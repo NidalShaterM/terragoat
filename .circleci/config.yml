@@ -7,11 +7,12 @@ jobs:
     build:
       executor: bridgecrew/default
       steps:
-        - checkout
-        - when:
-          condition:
-            equal: ["${CIRCLE_BRANCH}", "master"]
-          steps:
-             - bridgecrew/scan:
-            directory: ./terraform/aws
-            soft-fail: true # do not fail the workflow in case vulnerabilities have found.
+        - run:
+          - checkout
+          - when:
+            condition:
+              equal: ["${CIRCLE_BRANCH}", "master"]
+            steps:
+              - bridgecrew/scan:
+              directory: ./terraform/aws
+              soft-fail: true # do not fail the workflow in case vulnerabilities have found.
