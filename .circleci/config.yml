@@ -1,20 +1,13 @@
----
 version: 2.1
+
 orbs:
-  bridgecrew: bridgecrew/bridgecrew@1.0.5
+  checkov: bridgecrew/checkov@1.0.5
+
 jobs:
   build:
-    docker:
-      - image: alpine:3.15
-    steps:
-      - run:
-          name: The First Step
-          command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
-  test-scan:
-    executor: bridgecrew/default
+    executor: checkov/default
     steps:
       - checkout
-      - bridgecrew/scan:
-          directory: ./terraform/aws
+      - checkov/scan:
+          file: "./terraform/db-app.tf"
+          output: "json"
