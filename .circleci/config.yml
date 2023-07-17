@@ -1,13 +1,12 @@
 version: 2.1
 
 orbs:
-  checkov: bridgecrew/checkov@1.0.5
+    bridgecrew: bridgecrew/bridgecrew@1.0.5
 
 jobs:
-  build:
-    executor: checkov/default
-    steps:
-      - checkout
-      - checkov/scan:
-          file: "./terraform/db-app.tf"
-          output: "json"
+    build:
+      executor: bridgecrew/default
+      steps:
+        - checkout
+        - bridgecrew/scan:
+            directory: '.'
