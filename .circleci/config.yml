@@ -1,13 +1,12 @@
----
 version: 2.1
+
 orbs:
     bridgecrew: bridgecrew/bridgecrew@1.0.5
 
 jobs:
-  test:
-    executor: bridgecrew/default
-    steps:
-      - checkout
-      - bridgecrew/scan:
-          directory: './terraform/aws'
-
+    build:
+      executor: bridgecrew/default
+      steps:
+        - checkout
+        - bridgecrew/scan:
+            directory: './terraform/aws'
