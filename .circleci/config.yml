@@ -12,11 +12,10 @@ jobs:
           command: |
             echo 'Hello World!'
             echo 'This is the delivery pipeline'
-    test:
+  test:
     executor: bridgecrew/default
     steps:
       - checkout
       - bridgecrew/scan:
           directory: './terraform/aws'
-          soft-fail: true
 
