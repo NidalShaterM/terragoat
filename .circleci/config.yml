@@ -10,4 +10,4 @@ jobs:
         - checkout
         - bridgecrew/scan:
             directory: './terraform/aws'
-            soft-fail: true 
+            soft-fail: true                                     # do not fail the workflow in case vulnerabilities have found 
