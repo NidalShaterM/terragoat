@@ -6,7 +6,7 @@ orbs:
 when:
     and:
       - not:
-          equal: [ main, << pipeline.git.branch >> ]
+          equal: [ master, << pipeline.git.branch >> ]
 jobs:
   build:
     executor: bridgecrew/default
