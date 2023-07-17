@@ -10,5 +10,4 @@ jobs:
         - checkout
         - bridgecrew/scan:
             directory: ./terraform/aws
-            output: "json"
             soft-fail: true                                     # do not fail the workflow in case vulnerabilities have found.
