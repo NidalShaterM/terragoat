@@ -3,15 +3,15 @@ version: 2.1
 orbs:
   bridgecrew: bridgecrew/bridgecrew@1.0.5
 
+when:
+    and:
+      - not:
+          equal: [ main, << pipeline.git.branch >> ]
 jobs:
   build:
     executor: bridgecrew/default
     steps:
       - checkout
-      - when:
-          condition:
-            equal: ["${CIRCLE_BRANCH}", "master"]
-        steps:
-          - bridgecrew/scan:
+      - bridgecrew/scan:
               directory: ./terraform/aws
               soft-fail: true # do not fail the workflow in case vulnerabilities have found.
