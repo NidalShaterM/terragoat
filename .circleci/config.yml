@@ -4,15 +4,11 @@ orbs:
 jobs:
   build:
     executor: bridgecrew/default
+    filters:
+      branches:
+        ignore: master
     steps:
       - checkout
-      - when:
-          condition:
-            not:
-              equal:
-                - master
-                - ${CIRCLE_BRANCH}
-          steps:
-            - bridgecrew/scan:
-                directory: ./terraform/aws
-                soft-fail: true
+      - bridgecrew/scan:
+          directory: ./terraform/aws
+          soft-fail: true
